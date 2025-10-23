@@ -1,13 +1,18 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Slot } from "expo-router";
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import "./global.css";
 
+const queryClient = new QueryClient();
 const RootLayout = () => {
   return (
-    <SafeAreaView>
-      <Slot />
-    </SafeAreaView>
+    <QueryClientProvider client={queryClient}>
+      <Slot
+        screenOptions={{
+          headerShown: false,
+        }}
+      />
+    </QueryClientProvider>
   );
 };
 
