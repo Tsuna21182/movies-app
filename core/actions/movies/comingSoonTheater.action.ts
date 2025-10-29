@@ -8,8 +8,6 @@ export const comingSoonTheaters = async () => {
 
     const movies = data.results.map(MovieMapper.fromTheMovieDBToMovie);
 
-    console.log(movies);
-
     return movies;
   } catch (error) {
     console.log(error);

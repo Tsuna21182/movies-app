@@ -1,3 +1,5 @@
+import MovieCast from "@/presentation/components/cardComponent/Cast";
+import Description from "@/presentation/components/cardComponent/Description";
 import Header from "@/presentation/components/cardComponent/Header";
 import { useMovies } from "@/presentation/hooks/useMovies";
 import { useLocalSearchParams } from "expo-router";
@@ -7,7 +9,7 @@ import { ActivityIndicator, ScrollView, Text, View } from "react-native";
 const MovieScreen = () => {
   const { id } = useLocalSearchParams();
 
-  const { getMovieByID } = useMovies(+id);
+  const { getMovieByID, getCastMovie } = useMovies(+id);
 
   if (getMovieByID.isLoading || !getMovieByID.data) {
     return (
@@ -25,6 +27,9 @@ const MovieScreen = () => {
         poster={getMovieByID.data.poster}
         title={getMovieByID.data.title}
       />
+      <Description movie={getMovieByID.data} />
+
+      <MovieCast cast={getCastMovie.data ?? []} />
     </ScrollView>
   );
 };

@@ -1,6 +1,7 @@
 import { bestRatedMovies } from "@/core/actions/movies/bestRated.action";
 import { comingSoonTheaters } from "@/core/actions/movies/comingSoonTheater.action";
 import { getMovieById } from "@/core/actions/movies/getMovieById.action";
+import { getMovieCastAction } from "@/core/actions/movies/getMovieCast.action";
 import { nowPlayingAction } from "@/core/actions/movies/now-playing.action";
 import { popularMoviesAction } from "@/core/actions/movies/popular.action";
 import { CompleteMovie } from "@/infrastructure/interfaces/movie.interface";
@@ -42,11 +43,19 @@ export const useMovies = (id?: number) => {
     staleTime: 1000 * 60 * 60 * 24,
   });
 
+  const getCastMovie = useQuery({
+    queryKey: ["CastMovie", "cast", id],
+    queryFn: () => getMovieCastAction(id!),
+    enabled: !!id,
+    staleTime: 1000 * 60 * 60 * 24,
+  });
+
   return {
     nowPlayingQuery,
     popularQuery,
     bestRatedQuery,
     comingSoonQuery,
     getMovieByID,
+    getCastMovie,
   };
 };

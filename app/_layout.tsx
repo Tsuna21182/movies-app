@@ -1,18 +1,21 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Slot } from "expo-router";
 import React from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import "./global.css";
 
 const queryClient = new QueryClient();
 const RootLayout = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Slot
-        screenOptions={{
-          headerShown: false,
-        }}
-      />
-    </QueryClientProvider>
+    <GestureHandlerRootView>
+      <QueryClientProvider client={queryClient}>
+        <Slot
+          screenOptions={{
+            headerShown: false,
+          }}
+        />
+      </QueryClientProvider>
+    </GestureHandlerRootView>
   );
 };
 

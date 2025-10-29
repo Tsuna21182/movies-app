@@ -63,7 +63,7 @@ const Header = ({ poster, originalTitle, title }: Props) => {
       </View>
       <View className="px-5 mt-5">
         <Text className="font-normal">{originalTitle}</Text>
-        <Text className="font-semibold text-2xl">{title}</Text>
+        <Text className="font-semibold text-3xl">{title}</Text>
       </View>
     </>
   );

@@ -38,7 +38,7 @@ const MovieHorizontalList = ({ movies, title, loadNextPage }: Props) => {
     isLoading.current = true;
 
     //TODO:
-    console.log("cargar siguientes peliculas");
+
     loadNextPage && loadNextPage();
   };
 
